@@ -1,0 +1,74 @@
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
+public class ACTIVIDAD13 {
+
+    private List<String> textList;
+
+    public ACTIVIDAD13() {
+        textList = new ArrayList<>();
+        textList.add("Kathya");
+        textList.add("Gomez");
+        textList.add("Computacion");
+        textList.add("Java");
+        textList.add("Actividad");
+        textList.add("Codigo");
+        textList.add("Ultima");
+        textList.add("entrega");
+        textList.add("Programacion");
+        textList.add("semestre");
+    }
+
+    public void sortByLengthWithAnonymousClass() {
+        textList.sort(new Comparator<String>() {
+            @Override
+            public int compare(String s1, String s2) {
+                return Integer.compare(s1.length(), s2.length());
+            }
+        });
+        System.out.println("Ordenado por longitud con clase anónima: " + textList);
+    }
+
+    public void sortByLengthWithLambda() {
+        textList.sort((s1, s2) -> Integer.compare(s1.length(), s2.length()));
+        System.out.println("Ordenada por longitud con lambda: " + textList);
+    }
+
+    public void sortByLengthWithMethodReference() {
+        textList.sort(Comparator.comparingInt(String::length));
+        System.out.println("Ordenado por longitud con referencia de método: " + textList);
+    }
+
+    public void sortByAlphabetWithAnonymousClass() {
+        textList.sort(new Comparator<String>() {
+            @Override
+            public int compare(String s1, String s2) {
+                return s1.compareTo(s2);
+            }
+        });
+        System.out.println("Ordenada alfabéticamente con clase anónima: " + textList);
+    }
+
+    public void sortByAlphabetWithLambda() {
+        textList.sort((s1, s2) -> s1.compareTo(s2));
+        System.out.println("Ordenada alfabéticamente con lambda: " + textList);
+    }
+
+    public void sortByAlphabetWithMethodReference() {
+        textList.sort(String::compareTo);
+        System.out.println("Ordenado alfabéticamente con referencia al método: " + textList);
+    }
+
+    public static void main(String[] args) {
+        ACTIVIDAD13 example = new ACTIVIDAD13();
+        example.sortByLengthWithAnonymousClass();
+        example.sortByLengthWithLambda();
+        example.sortByLengthWithMethodReference();
+        example.sortByAlphabetWithAnonymousClass();
+        example.sortByAlphabetWithLambda();
+        example.sortByAlphabetWithMethodReference();
+    }
+
+}
+
